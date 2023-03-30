@@ -73,20 +73,6 @@ def train_DGI(config, data_loader):
                 print('Epoch: {:03d}, Loss: {:.4f}'.format(epoch+1, np.mean(DGI_all_loss)))
                 DGI_loss_list.append(np.mean(DGI_all_loss))
 
-                                # 记录训练过程的指标
-            # history = hl.History()
-            # # 使用canvas进行可视化
-            # canvas = hl.Canvas()
-            
-            # # 以epoch和step为索引，创建日志字典
-            # history.log((epoch,step),
-            #             train_loss=np.mean(DGI_all_loss))
-
-            # with canvas:
-            #         canvas.draw_plot(history["train_loss"])
-            #         #  canvas.draw_plot(history["test_acc"])
-            #         #  canvas.draw_image(history["hidden_weight"])
-
         end_time = datetime.datetime.now()
         DGI_filename =  config['generated_data_path']+'DGI_lambdaI_' + str(config['args_lambda_I']) + '_epoch' + str(config['args_num_epoch']) + '.pth.tar'
         torch.save(DGI_model.state_dict(), DGI_filename)

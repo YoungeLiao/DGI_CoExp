@@ -1,33 +1,27 @@
 from sklearn.cluster import KMeans, DBSCAN, AffinityPropagation
 from sklearn import metrics
 
-# PCA
+
 def PCA_process(X, nps):
     from sklearn.decomposition import PCA
     print('Shape of data to PCA:', X.shape)
     pca = PCA(n_components=nps)
-    X_PC = pca.fit_transform(X)     #等价于pca.fit(X) pca.transform(X)
+    X_PC = pca.fit_transform(X)     
     print('Shape of data output by PCA:', X_PC.shape)
     print('PCA recover:', pca.explained_variance_ratio_.sum())
     return X_PC
 
 
-# Kmeans
+
 def Kmeans_cluster(X_embedding, n_clusters, merge=False):
     cluster_model = KMeans(n_clusters=n_clusters, init='k-means++', n_init=100, max_iter=1000, tol=1e-6)
     cluster_labels = cluster_model.fit_predict(X_embedding)
-
-    # merge clusters with less than 3 cells
     if merge:
         cluster_labels = merge_cluser(X_embedding, cluster_labels)
-
     score = metrics.silhouette_score(X_embedding, cluster_labels, metric='euclidean')
     
     return cluster_labels, score
 
-
-# Obtain loss & Visualization
-# utils.plot(DGI_model)
 def merge_cluser(X_embedding, cluster_labels):
     count_dict, out_count_dict = {}, {}
     for cluster in cluster_labels:
