@@ -1,0 +1,16 @@
+"0","suppressPackageStartupMessages(library(DESeq2))"
+"0","dds <- DESeqDataSetFromMatrix(raw.counts, colData, design = ~conditions)"
+"0","# differential analysis"
+"0","dds <- DESeq(dds)"
+"2","estimating size factors
+"
+"2","estimating dispersions
+"
+"2","gene-wise dispersion estimates
+"
+"2","mean-dispersion relationship
+"
+"2","final dispersion estimates
+"
+"2","fitting model and testing
+"

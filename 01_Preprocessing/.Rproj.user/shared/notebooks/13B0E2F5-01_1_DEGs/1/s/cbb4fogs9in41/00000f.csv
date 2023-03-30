@@ -1,0 +1,3 @@
+"0","conditions <- factor(c(rep(""Blue"", 3), rep(""Dark"", 3), rep(""Yellow"", 3)), levels = c(""Blue"",""Dark"", ""Yellow""))"
+"0","colData <- data.frame(row.names = colnames(raw.counts), conditions = conditions)"
+"0","colData"

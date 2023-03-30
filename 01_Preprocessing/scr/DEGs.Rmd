@@ -1,0 +1,160 @@
+---
+title: "DESeq"
+# output: '01_1_DEGs.nb.html''output_data/DEGs_all.csv'
+---
+
+# Step1. prepare data
+
+Load metatranscriptomics data of reads counts for DESeq analysis. 
+```{r}
+raw.counts <- read.table("../data/gene_count.txt", sep='\t', header = T,row.names = 1)
+head(raw.counts)
+dim(raw.counts)
+```
+# Step2. Group information
+```{r}
+conditions <- factor(c(rep("Blue", 3), rep("Dark", 3), rep("Yellow", 3)), levels = c("Blue","Dark", "Yellow"))
+colData <- data.frame(row.names = colnames(raw.counts), conditions = conditions)
+colData
+```
+# Step3. Differential analysis
+```{r}
+suppressPackageStartupMessages(library(DESeq2))
+dds <- DESeqDataSetFromMatrix(raw.counts, colData, design = ~conditions)
+# differential analysis
+dds <- DESeq(dds)
+```
+
+
+# Step4: Extract differential expression matrix from DESeq results
+
+Dark condition was used as control. 
+```{r}
+DESeqRes_B_D <- results(dds,contrast = c("conditions","Blue","Dark")) 
+DESeqRes_Y_D <- results(dds,contrast = c("conditions","Yellow","Dark")) 
+# :para first(i.e. conditions): name of factor in the design formula
+# :para second(i.e. Blue): numerator of FC
+# :para third(i.e. Dark): denominator of FC
+DEGs_B_D <- as.data.frame(DESeqRes_B_D)
+DEGs_Y_D <- as.data.frame(DESeqRes_Y_D)
+
+# remove row with NA
+DEGs_B_D <- na.omit(DEGs_B_D) # dim: [55189, 6]
+DEGs_Y_D <- na.omit(DEGs_Y_D) # dim: [54087, 6]
+
+```
+
+# Step5: Filter Differential expressed genes (DEGs)
+```{r}
+# threshold: padj < 0.05, log2 fold change > 1
+## blue vs dark:
+DEGs_B_D_filtered <- subset(DEGs_B_D, padj < 0.05 & abs(log2FoldChange) > 1)
+dim(DEGs_B_D_filtered) # [1] 36373     6
+head(DEGs_B_D_filtered)
+
+## yellow vs dark:
+DEGs_Y_D_filtered <- subset(DEGs_Y_D, padj < 0.05 & abs(log2FoldChange) > 1)
+dim(DEGs_Y_D_filtered) # [1] 6293    6
+head(DEGs_Y_D_filtered)
+```
+# Step6: Describe and merge data
+It turned out that there were 5449 DEGs of blue and yellow light were overlap. So, there are in total 37217 DEGs obtained. 
+Following codes were optional.
+```{r}
+DEGs_B_D_filtered$gene_id <- rownames(DEGs_B_D_filtered)
+DEGs_Y_D_filtered$gene_id <- rownames(DEGs_Y_D_filtered)
+# overlap detection 
+loc <- match(DEGs_B_D_filtered$gene_id, DEGs_Y_D_filtered$gene_id)
+loc_overlap <- loc[!is.na(loc)]
+length(loc_overlap) 
+
+```
+Labeing for DEGs and merge data
+```{r}
+DEGs_B_D_filtered$B_DEGs_label <- 1
+DEGs_B_D_filtered$Y_DEGs_label <- 0
+colnames(DEGs_B_D_filtered) <- c('baseMean_BvsD', 'log2FC_BvsD', 'lfcSE_BvsD', 'stat_BvsD', 'pvalue_BvsD', 'padj_BvsD', 'gene_id', 'B_DEGs_label', 'Y_DEGs_label')
+DEGs_Y_D_filtered$B_DEGs_label <- 0
+DEGs_Y_D_filtered$Y_DEGs_label <- 1
+colnames(DEGs_Y_D_filtered) <- c('baseMean_YvsD', 'log2FC_YvsD', 'lfcSE_YvsD', 'stat_YvsD', 'pvalue_YvsD', 'padj_YvsD', 'gene_id', 'B_DEGs_label', 'Y_DEGs_label')
+
+DEGs_all <- merge(DEGs_B_D_filtered, DEGs_Y_D_filtered, by = 'gene_id', all = T)
+DEGs_all
+
+```
+
+# Step7: Save All DEGs
+```{r}
+write.csv(DEGs_all, 'output_data/DEGs_all.csv')
+```
+
+# Step8: Filter DEGs that with low expression (fpkm)
+Load expression matrix quantified in fpkm and mean fpkm across all samples
+```{r}
+fpkm <- as.data.frame(read.table("../data/gene_fpkm_all_samples.txt", sep='\t', header = T, colClasses = c('character', rep('numeric', 9))))
+fpkm
+
+temp_mean <- rep(NA, length(fpkm$Gene_ID))
+for(i in 1:length(fpkm$Blue1)){
+  temp_mean[i] <- mean(t(fpkm[i, 2:10]))
+}
+fpkm$mean <- temp_mean
+```
+
+Filter mean < 1.0
+```{r}
+loc <- fpkm$mean >= 1
+fpkm.filtered <- fpkm[loc,]
+```
+
+Merge with DEGs. 25886 validate DEGs were obtained.
+```{r}
+oldnames <- colnames(fpkm.filtered)
+newnames <- c('gene_id', oldnames[2:11])
+colnames(fpkm.filtered) <- newnames
+# DEGs.filtered <- merge(DEGs_all, fpkm.filtered, by = 'gene_id', all.x = F, all.y = F)
+DEGs.filtered <- merge(DEGs_all, fpkm.filtered, by = 'gene_id', all = F)
+```
+
+# Step9: Filter low-expressed genes of BvsD and YvsD
+There are in total 25277 valid DEGs of blue light, 4366 valid DEGs of yellow light.
+```{r}
+# blue vs dark
+loc <- match(DEGs_B_D_filtered$gene_id, DEGs.filtered$gene_id)
+summary(loc)
+loc <- loc[!is.na(loc)]
+DEGs_B_D_valid <- DEGs.filtered[loc, ]
+
+# yellow vs darl
+loc <- match(DEGs_Y_D_filtered$gene_id, DEGs.filtered$gene_id)
+summary(loc)
+loc <- loc[!is.na(loc)]
+DEGs_Y_D_valid <- DEGs.filtered[loc, ]
+```
+
+
+# Step10: Save filtered DEGs
+```{r}
+#  all filtered DEGs after merge 
+write.csv(DEGs.filtered, 'output_data/DEGs_filtered.csv')
+
+# DEGs of separate condition
+## Blue vs Dark
+write.csv(DEGs_B_D_valid, 'output_data/DEGs_BvsD_valid.csv', row.names = FALSE)
+## Yellow vs Dark
+write.csv(DEGs_Y_D_valid, 'output_data/DEGs_YvsD_valid.csv', row.names = FALSE)
+```
+
+
+# R markdown tutorial
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+

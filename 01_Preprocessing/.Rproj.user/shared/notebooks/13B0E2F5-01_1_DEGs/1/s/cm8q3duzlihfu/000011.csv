@@ -1,0 +1,2 @@
+"0","fpkm <- as.data.frame(read.table(""../data/gene_fpkm_all_samples.txt"", sep='\t', header = T, colClasses = c('character', rep('numeric', 9))))"
+"0","fpkm"

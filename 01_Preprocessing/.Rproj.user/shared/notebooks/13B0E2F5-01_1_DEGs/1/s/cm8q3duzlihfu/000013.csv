@@ -1,0 +1,6 @@
+"0",""
+"0","temp_mean <- rep(NA, length(fpkm$Gene_ID))"
+"0","for(i in 1:length(fpkm$Blue1)){"
+"0","  temp_mean[i] <- mean(t(fpkm[i, 2:10]))"
+"0","}"
+"0","fpkm$mean <- temp_mean"

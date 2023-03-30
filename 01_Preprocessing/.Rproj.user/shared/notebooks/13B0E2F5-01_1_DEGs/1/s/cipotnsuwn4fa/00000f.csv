@@ -1,0 +1,5 @@
+"0","oldnames <- colnames(fpkm.filtered)"
+"0","newnames <- c('gene_id', oldnames[2:11])"
+"0","colnames(fpkm.filtered) <- newnames"
+"0","# DEGs.filtered <- merge(DEGs_all, fpkm.filtered, by = 'gene_id', all.x = F, all.y = F)"
+"0","DEGs.filtered <- merge(DEGs_all, fpkm.filtered, by = 'gene_id', all = F)"

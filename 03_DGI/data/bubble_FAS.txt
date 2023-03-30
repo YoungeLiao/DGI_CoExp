@@ -1,0 +1,6 @@
+group	DGI	DGI subcel	Kmeans	Kmeans subcel	DGI	DGI subcel	Kmeans	Kmeans subcel
+Peroxisome	-1.43	-1.23	-1.66	-1.32	1.06	1.08	0.31	0.10
+Phototransduction	2.27	2.31	1.71	1.52	1.94	1.93	1.94	1.55
+Metabolism of xenobiotics by cytochrome P450	-0.63	-0.60	-1.54	-1.10	3.37	3.42	2.79	1.59
+Drug metabolism - cytochrome P450	-0.68	-0.64	-1.57	-1.13	3.09	3.10	2.57	1.55
+Longevity regulating pathway - multiple species	-0.06	0.18	-0.39	-0.47	4.29	3.60	4.20	0.72

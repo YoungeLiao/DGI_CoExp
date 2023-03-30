@@ -1,0 +1,2 @@
+"0","loc <- fpkm$mean >= 1"
+"0","fpkm.filtered <- fpkm[loc,]"

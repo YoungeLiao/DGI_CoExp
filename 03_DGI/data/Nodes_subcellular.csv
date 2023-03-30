@@ -1,0 +1,60 @@
+"Id","Label","timeset","Degree","Weighted.Degree","Sig0alP","tmhmm"
+"4-hydroxy-tetrahydrodipicolinate reductase (g_00438)","4-hydroxy-tetrahydrodipicolinate reductase (g_00438)",NA,35,33.509933,0,0
+"actin beta/gamma 1 (g_01051)","actin beta/gamma 1 (g_01051)",NA,32,-22.194421,0,0
+"molecular chaperone DnaK (g_03874)","molecular chaperone DnaK (g_03874)",NA,33,28.638236,0,0
+"flagellin (g_05066)","flagellin (g_05066)",NA,40,17.048849,0,0
+"flagellar motor switch protein FliM (g_06237)","flagellar motor switch protein FliM (g_06237)",NA,34,27.871649,0,0
+"nitrite reductase (NO-forming) (g_06597)","nitrite reductase (NO-forming) (g_06597)",NA,34,26.287574,0,0
+"glutamate dehydrogenase (NADP+) (g_08083)","glutamate dehydrogenase (NADP+) (g_08083)",NA,31,17.189461,0,0
+"calmodulin (g_08757)","calmodulin (g_08757)",NA,34,-23.440663,0,0
+"calmodulin (g_09501)","calmodulin (g_09501)",NA,35,-25.029762,0,0
+"calmodulin (g_09982)","calmodulin (g_09982)",NA,33,-9.424857,0,0
+"classical protein kinase C alpha type (g_10420)","classical protein kinase C alpha type (g_10420)",NA,20,-4.01468,0,0
+"flagellum-specific ATP synthase (g_10722)","flagellum-specific ATP synthase (g_10722)",NA,33,21.901153,0,0
+"nitrous-oxide reductase (g_11709)","nitrous-oxide reductase (g_11709)",NA,29,-24.517664,1,0
+"ATP-binding protein involved in chromosome partitioning (g_12493)","ATP-binding protein involved in chromosome partitioning (g_12493)",NA,30,29.536545,0,0
+"flagellar biosynthesis protein FlhB (g_14330)","flagellar biosynthesis protein FlhB (g_14330)",NA,34,27.871649,0,1
+"flagellin (g_14403)","flagellin (g_14403)",NA,30,29.934783,0,0
+"aspartyl-tRNA(Asn)/glutamyl-tRNA(Gln) amidotransferase subunit A (g_15019)","aspartyl-tRNA(Asn)/glutamyl-tRNA(Gln) amidotransferase subunit A (g_15019)",NA,34,22.93031,0,0
+"outer membrane protein insertion porin family (g_15716)","outer membrane protein insertion porin family (g_15716)",NA,38,28.386303,1,1
+"leucyl-tRNA synthetase (g_16779)","leucyl-tRNA synthetase (g_16779)",NA,33,32.420845,0,0
+"tartronate-semialdehyde synthase (g_17714)","tartronate-semialdehyde synthase (g_17714)",NA,29,31.607658,0,0
+"glutamine synthetase (g_18966)","glutamine synthetase (g_18966)",NA,35,9.218131,0,0
+"MFS transporter, NNP family, nitrate/nitrite transporter (g_19066)","MFS transporter, NNP family, nitrate/nitrite transporter (g_19066)",NA,34,21.435325,0,1
+"chemotaxis protein MotB (g_19622)","chemotaxis protein MotB (g_19622)",NA,31,26.490696,0,1
+"type IV pilus assembly protein PilA (g_20098)","type IV pilus assembly protein PilA (g_20098)",NA,30,31.739199,0,1
+"molecular chaperone HtpG (g_22023)","molecular chaperone HtpG (g_22023)",NA,32,28.422095,0,0
+"type IV pilus assembly protein PilA (g_22211)","type IV pilus assembly protein PilA (g_22211)",NA,7,5.716667,0,1
+"outer membrane protein (g_23577)","outer membrane protein (g_23577)",NA,33,21.678773,0,0
+"guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1 (g_24609)","guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1 (g_24609)",NA,34,-23.440663,0,0
+"glutathione S-transferase (g_24930)","glutathione S-transferase (g_24930)",NA,34,22.48073,0,0
+"two-component system, LuxR family, sensor histidine kinase DctS (g_26479)","two-component system, LuxR family, sensor histidine kinase DctS (g_26479)",NA,29,23.617977,0,0
+"calmodulin (g_26777)","calmodulin (g_26777)",NA,29,-16.225055,0,0
+"ubiquinol-cytochrome c reductase cytochrome b subunit (g_26961)","ubiquinol-cytochrome c reductase cytochrome b subunit (g_26961)",NA,34,25.283927,0,1
+"flagellar hook-associated protein 1 (g_27359)","flagellar hook-associated protein 1 (g_27359)",NA,30,23.40869,0,0
+"flagellin (g_27535)","flagellin (g_27535)",NA,32,16.432037,0,0
+"sulfate adenylyltransferase subunit 2 (g_28417)","sulfate adenylyltransferase subunit 2 (g_28417)",NA,33,24.36768,0,0
+"glutathione S-transferase (g_29251)","glutathione S-transferase (g_29251)",NA,39,31.932058,0,0
+"type IV pilus assembly protein PilA (g_31469)","type IV pilus assembly protein PilA (g_31469)",NA,28,29.805435,0,1
+"calmodulin (g_31770)","calmodulin (g_31770)",NA,33,-24.486568,0,1
+"flagellar hook-associated protein 2 (g_31812)","flagellar hook-associated protein 2 (g_31812)",NA,31,31.926096,0,0
+"carbonic anhydrase (g_33366)","carbonic anhydrase (g_33366)",NA,33,20.490595,0,0
+"guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1 (g_33597)","guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1 (g_33597)",NA,33,-21.678773,0,0
+"actin beta/gamma 1 (g_34466)","actin beta/gamma 1 (g_34466)",NA,29,-19.605243,0,0
+"isocitrate dehydrogenase (g_34655)","isocitrate dehydrogenase (g_34655)",NA,33,22.864008,0,0
+"chemotaxis protein MotA (g_35105)","chemotaxis protein MotA (g_35105)",NA,37,24.736304,0,1
+"ATP-dependent Clp protease ATP-binding subunit ClpB (g_37568)","ATP-dependent Clp protease ATP-binding subunit ClpB (g_37568)",NA,28,30.717655,0,1
+"nitric oxide reductase subunit B (g_38240)","nitric oxide reductase subunit B (g_38240)",NA,31,17.529065,0,1
+"molecular chaperone DnaK (g_38292)","molecular chaperone DnaK (g_38292)",NA,32,28.269999,0,0
+"superoxide dismutase, Fe-Mn family (g_41985)","superoxide dismutase, Fe-Mn family (g_41985)",NA,32,17.735983,0,0
+"4-hydroxy-tetrahydrodipicolinate synthase (g_47987)","4-hydroxy-tetrahydrodipicolinate synthase (g_47987)",NA,32,17.735983,0,0
+"glutamate dehydrogenase (NADP+) (g_48492)","glutamate dehydrogenase (NADP+) (g_48492)",NA,33,22.521433,0,0
+"guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1 (g_48714)","guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1 (g_48714)",NA,33,-24.317121,0,0
+"calmodulin (g_49798)","calmodulin (g_49798)",NA,37,-24.81782,0,0
+"flagellin (g_50142)","flagellin (g_50142)",NA,26,16.559584,0,0
+"elongation factor Tu (g_50706)","elongation factor Tu (g_50706)",NA,10,10.216667,0,0
+"nitrate reductase / nitrite oxidoreductase, alpha subunit (g_51049)","nitrate reductase / nitrite oxidoreductase, alpha subunit (g_51049)",NA,34,17.601029,0,0
+"type IV pilus assembly protein PilA (g_52123)","type IV pilus assembly protein PilA (g_52123)",NA,32,26.657956,0,1
+"flagellin (g_55742)","flagellin (g_55742)",NA,32,22.474684,0,0
+"molecular chaperone DnaK (g_55811)","molecular chaperone DnaK (g_55811)",NA,11,5.746468,0,0
+"UPF0716 protein FxsA (g_55969)","UPF0716 protein FxsA (g_55969)",NA,23,18.95672,1,1

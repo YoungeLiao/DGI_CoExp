@@ -1,0 +1,8 @@
+"0","#  all filtered DEGs after merge "
+"0","write.csv(DEGs.filtered, 'output_data/DEGs_filtered.csv')"
+"0",""
+"0","# DEGs of separate condition"
+"0","## Blue vs Dark"
+"0","write.csv(DEGs_B_D_valid, 'output_data/DEGs_BvsD_valid.csv', row.names = FALSE)"
+"0","## Yellow vs Dark"
+"0","write.csv(DEGs_Y_D_valid, 'output_data/DEGs_YvsD_valid.csv', row.names = FALSE)"

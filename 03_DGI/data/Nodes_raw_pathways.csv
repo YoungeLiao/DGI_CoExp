@@ -1,0 +1,153 @@
+Id,Label,timeset,Degree,Weighted Degree,Eccentricity,closnesscentrality,harmonicclosnesscentrality,betweenesscentrality
+ABC transporters,ABC transporters,,55,-22.904762,4,0.561798,0.655,0.012277
+Amino sugar and nucleotide sugar metabolism,Amino sugar and nucleotide sugar metabolism,,43,27.285714,4,0.533808,0.612778,0.005891
+Bacterial chemotaxis,Bacterial chemotaxis,,39,-7.785714,3,0.517241,0.593333,0.003661
+Galactose metabolism,Galactose metabolism,,42,28.190476,3,0.531915,0.608889,0.005877
+Glycosyltransferases,Glycosyltransferases,,37,31.404762,4,0.519031,0.590556,0.004826
+O-Antigen repeat unit biosynthesis,O-Antigen repeat unit biosynthesis,,36,8.833333,4,0.520833,0.589444,0.003556
+Peptidoglycan biosynthesis,Peptidoglycan biosynthesis,,76,-64.95238,4,0.612245,0.726111,0.014168
+Transport,Transport,,46,19.357143,3,0.543478,0.624444,0.007246
+alpha-Linolenic acid metabolism,alpha-Linolenic acid metabolism,,59,62.023809,4,0.56391,0.665,0.008749
+Amino acid metabolism,Amino acid metabolism,,58,50.619047,4,0.555556,0.658333,0.012301
+Antigen processing and presentation,Antigen processing and presentation,,68,74.023809,4,0.585938,0.696111,0.004085
+Apoptosis - fly,Apoptosis - fly,,64,71.47619,3,0.579151,0.683333,0.004411
+Biosynthesis of unsaturated fatty acids,Biosynthesis of unsaturated fatty acids,,62,63.904762,4,0.56391,0.671667,0.011064
+Carbon fixation in photosynthetic organisms,Carbon fixation in photosynthetic organisms,,59,-61.97619,4,0.541516,0.652778,0.005087
+Cell cycle - Caulobacter,Cell cycle - Caulobacter,,65,75.547618,4,0.572519,0.682778,0.003102
+Chaperones and folding catalysts,Chaperones and folding catalysts,,68,71.595237,4,0.592885,0.699444,0.00637
+Coronavirus disease - COVID-19,Coronavirus disease - COVID-19,,57,62.095237,4,0.539568,0.647222,0.003718
+EGFR tyrosine kinase inhibitor resistance,EGFR tyrosine kinase inhibitor resistance,,65,71.642857,3,0.581395,0.686667,0.00469
+Exosome,Exosome,,68,74.023809,4,0.585938,0.696111,0.004085
+Fluid shear stress and atherosclerosis,Fluid shear stress and atherosclerosis,,65,75.547618,4,0.572519,0.682778,0.003102
+Glycerolipid metabolism,Glycerolipid metabolism,,65,64.119047,4,0.585938,0.689444,0.013332
+Leishmaniasis,Leishmaniasis,,63,69.904761,4,0.566038,0.675,0.00275
+Membrane trafficking,Membrane trafficking,,65,75.547618,4,0.572519,0.682778,0.003102
+Messenger RNA biogenesis,Messenger RNA biogenesis,,68,71.119047,4,0.590551,0.698333,0.005748
+Mitochondrial biogenesis,Mitochondrial biogenesis,,68,71.595237,4,0.592885,0.699444,0.00637
+Necroptosis,Necroptosis,,65,75.547618,4,0.572519,0.682778,0.003102
+Pathways in cancer,Pathways in cancer,,68,74.023809,4,0.585938,0.696111,0.004085
+Peptidases and inhibitors,Peptidases and inhibitors,,59,69.119047,4,0.568182,0.667222,0.004569
+Phenylpropanoid biosynthesis,Phenylpropanoid biosynthesis,,54,60.857143,4,0.549451,0.646111,0.003192
+Proteasome,Proteasome,,68,74.023809,4,0.585938,0.696111,0.004085
+Protein phosphatases and associated proteins,Protein phosphatases and associated proteins,,65,75.547618,4,0.572519,0.682778,0.003102
+Protein processing in endoplasmic reticulum,Protein processing in endoplasmic reticulum,,65,75.547618,4,0.572519,0.682778,0.003102
+Retrograde endocannabinoid signaling,Retrograde endocannabinoid signaling,,65,70.738095,4,0.576923,0.685,0.003683
+RNA degradation,RNA degradation,,68,71.119047,4,0.590551,0.698333,0.005748
+Secretion system,Secretion system,,48,38.619048,4,0.510204,0.609444,0.005967
+Transcription machinery,Transcription machinery,,59,68.380952,4,0.570342,0.668333,0.00504
+Alzheimer disease,Alzheimer disease,,66,50.595238,3,0.568182,0.682222,0.006092
+Amyotrophic lateral sclerosis,Amyotrophic lateral sclerosis,,66,50.595238,3,0.568182,0.682222,0.006092
+Biosynthesis of ansamycins,Biosynthesis of ansamycins,,51,29.857142,3,0.557621,0.643333,0.007305
+Carbapenem biosynthesis,Carbapenem biosynthesis,,44,-35.97619,3,0.49505,0.59,0.001101
+Carbohydrate digestion and absorption,Carbohydrate digestion and absorption,,68,46.095238,3,0.570342,0.687778,0.007449
+Fatty acid elongation,Fatty acid elongation,,60,62.333333,3,0.566038,0.667778,0.003995
+Hepatitis B,Hepatitis B,,70,58.880952,3,0.588235,0.701111,0.008528
+HIF-1 signaling pathway,HIF-1 signaling pathway,,68,45.690476,4,0.595238,0.700556,0.00914
+Hypertrophic cardiomyopathy,Hypertrophic cardiomyopathy,,54,52.023809,3,0.539568,0.64,0.001204
+Lipid and atherosclerosis,Lipid and atherosclerosis,,47,32.261904,4,0.5,0.600556,0.002058
+Non-alcoholic fatty liver disease,Non-alcoholic fatty liver disease,,67,37.5,3,0.592885,0.696667,0.011451
+Others,Others,,68,-45.428571,3,0.576923,0.691111,0.008313
+Parkinson disease,Parkinson disease,,70,58.880952,3,0.588235,0.701111,0.008528
+Pathways of neurodegeneration - multiple diseases,Pathways of neurodegeneration - multiple diseases,,66,50.595238,3,0.568182,0.682222,0.006092
+Prion disease,Prion disease,,66,50.595238,3,0.568182,0.682222,0.006092
+Proximal tubule bicarbonate reclamation,Proximal tubule bicarbonate reclamation,,66,49.071428,3,0.566038,0.681111,0.005945
+Ribosome,Ribosome,,47,37.428571,3,0.503356,0.602222,0.001544
+RIG-I-like receptor signaling pathway,RIG-I-like receptor signaling pathway,,61,59.119047,4,0.559701,0.667222,0.004581
+Thermogenesis,Thermogenesis,,66,50.595238,3,0.568182,0.682222,0.006092
+Exopolysaccharide biosynthesis,Exopolysaccharide biosynthesis,,37,26.261905,4,0.5,0.578333,0.006227
+Peptidoglycan biosynthesis and degradation proteins,Peptidoglycan biosynthesis and degradation proteins,,59,-57,3,0.541516,0.652222,0.005916
+Amino acid related enzymes,Amino acid related enzymes,,33,29.880952,4,0.508475,0.575,0.002447
+General function prediction only,General function prediction only,,51,42.142857,4,0.559701,0.645,0.007457
+"Phenylalanine, tyrosine and tryptophan biosynthesis","Phenylalanine, tyrosine and tryptophan biosynthesis",,54,38.023809,4,0.56391,0.653889,0.009627
+Purine metabolism,Purine metabolism,,47,48.190476,4,0.559701,0.636111,0.008162
+Starch and sucrose metabolism,Starch and sucrose metabolism,,58,51.97619,4,0.566038,0.663889,0.011836
+Transcription factors,Transcription factors,,58,51.97619,4,0.566038,0.663889,0.011836
+Carbon fixation pathways in prokaryotes,Carbon fixation pathways in prokaryotes,,34,30.761905,3,0.5,0.571111,0.006071
+Chromosome and associated proteins,Chromosome and associated proteins,,40,39.904762,4,0.526316,0.601667,0.005086
+O-Antigen nucleotide sugar biosynthesis,O-Antigen nucleotide sugar biosynthesis,,20,16.309524,4,0.451807,0.506111,0.000272
+Protein kinases,Protein kinases,,42,-19.547619,4,0.493421,0.585,0.00585
+Retinol metabolism,Retinol metabolism,,31,29,4,0.493421,0.561111,0.001928
+Aminoacyl-tRNA biosynthesis,Aminoacyl-tRNA biosynthesis,,50,18.690476,3,0.551471,0.637778,0.005347
+Arabinogalactan biosynthesis - Mycobacterium,Arabinogalactan biosynthesis - Mycobacterium,,49,17.214286,3,0.545455,0.632222,0.004559
+Bacterial motility proteins,Bacterial motility proteins,,48,-18.047619,3,0.545455,0.63,0.004145
+Central carbon metabolism in cancer,Central carbon metabolism in cancer,,47,19.357143,3,0.543478,0.626667,0.006999
+Chemical carcinogenesis - reactive oxygen species,Chemical carcinogenesis - reactive oxygen species,,42,16.904762,3,0.531915,0.608889,0.003549
+Flagellar assembly,Flagellar assembly,,48,-18.047619,3,0.545455,0.63,0.004145
+Function unknown,Function unknown,,44,19.452381,3,0.537634,0.616667,0.004833
+Huntington disease,Huntington disease,,43,19.619048,3,0.520833,0.604444,0.005832
+Legionellosis,Legionellosis,,51,-18.238095,3,0.551471,0.64,0.005417
+NOD-like receptor signaling pathway,NOD-like receptor signaling pathway,,49,-17.214286,3,0.545455,0.632222,0.004559
+Peroxisome,Peroxisome,,43,19.619048,3,0.520833,0.604444,0.005832
+Plant-pathogen interaction,Plant-pathogen interaction,,49,-17.214286,3,0.545455,0.632222,0.004559
+Pyrimidine metabolism,Pyrimidine metabolism,,43,19.619048,3,0.520833,0.604444,0.005832
+Salmonella infection,Salmonella infection,,49,-17.214286,3,0.545455,0.632222,0.004559
+Shigellosis,Shigellosis,,49,-17.214286,3,0.545455,0.632222,0.004559
+Two-component system,Two-component system,,48,-18.047619,3,0.545455,0.63,0.004145
+Cytochrome P450,Cytochrome P450,,55,48.095238,3,0.528169,0.635556,0.002187
+Drug metabolism - other enzymes,Drug metabolism - other enzymes,,67,69.45238,4,0.595238,0.698333,0.007189
+Insulin secretion,Insulin secretion,,64,64.357143,3,0.579151,0.683333,0.006155
+PI3K-Akt signaling pathway,PI3K-Akt signaling pathway,,58,54.571428,4,0.561798,0.661667,0.023192
+Cardiac muscle contraction,Cardiac muscle contraction,,43,8.404762,4,0.510204,0.599444,0.011723
+Dilated cardiomyopathy,Dilated cardiomyopathy,,49,15.595238,3,0.517241,0.615556,0.014448
+Energy metabolism,Energy metabolism,,43,10.285714,3,0.49505,0.587778,0.016736
+Ascorbate and aldarate metabolism,Ascorbate and aldarate metabolism,,30,23.97619,4,0.505051,0.566111,0.007747
+DNA replication,DNA replication,,35,25.404762,3,0.490196,0.566667,0.013472
+Glycerophospholipid metabolism,Glycerophospholipid metabolism,,34,25.571428,3,0.505051,0.574444,0.014112
+Homologous recombination,Homologous recombination,,37,39.357143,4,0.506757,0.582778,0.007459
+Mismatch repair,Mismatch repair,,45,26.5,4,0.543478,0.622778,0.019875
+"Neomycin, kanamycin and gentamicin biosynthesis","Neomycin, kanamycin and gentamicin biosynthesis",,37,43.952381,4,0.506757,0.583333,0.004513
+Sulfur metabolism,Sulfur metabolism,,36,29.619047,3,0.488599,0.567778,0.009754
+Bacterial secretion system,Bacterial secretion system,,23,8.119048,4,0.432277,0.496667,0.00105
+Mineral absorption,Mineral absorption,,31,5.190476,3,0.508475,0.57,0.002049
+D-Amino acid metabolism,D-Amino acid metabolism,,31,13.97619,4,0.446429,0.525,0.005387
+Benzoate degradation,Benzoate degradation,,16,3.238095,4,0.410959,0.462222,0.015464
+Terpenoid backbone biosynthesis,Terpenoid backbone biosynthesis,,17,7.214286,4,0.397878,0.451667,0.001491
+Butanoate metabolism,Butanoate metabolism,,30,16.833333,5,0.461538,0.537444,0.00373
+Insect hormone biosynthesis,Insect hormone biosynthesis,,59,55.452381,4,0.576923,0.671667,0.011994
+Limonene and pinene degradation,Limonene and pinene degradation,,56,50.214285,4,0.572519,0.662778,0.011722
+Longevity regulating pathway,Longevity regulating pathway,,21,-0.476191,4,0.443787,0.500556,0.003497
+MAPK signaling pathway - fly,MAPK signaling pathway - fly,,21,-0.476191,4,0.443787,0.500556,0.003497
+Signaling proteins,Signaling proteins,,30,17.095238,5,0.46875,0.543,0.004462
+Transporters,Transporters,,14,3.952381,5,0.408719,0.456333,0.001246
+Cytoskeleton proteins,Cytoskeleton proteins,,29,18.642857,3,0.480769,0.546667,0.010915
+Protein digestion and absorption,Protein digestion and absorption,,52,34.880952,3,0.533808,0.632222,0.006628
+Nucleotide excision repair,Nucleotide excision repair,,31,29.571428,4,0.491803,0.559444,0.004328
+Citrate cycle (TCA cycle),Citrate cycle (TCA cycle),,44,13.142857,3,0.488599,0.585556,0.016552
+Lipid biosynthesis proteins,Lipid biosynthesis proteins,,48,33.404762,3,0.555556,0.635556,0.011392
+Porphyrin metabolism,Porphyrin metabolism,,48,30.833333,3,0.555556,0.635556,0.010571
+Longevity regulating pathway - multiple species,Longevity regulating pathway - multiple species,,27,14,4,0.45045,0.519444,0.008713
+Chemical carcinogenesis - receptor activation,Chemical carcinogenesis - receptor activation,,23,1.071429,4,0.424929,0.488333,0.003252
+Folate biosynthesis,Folate biosynthesis,,26,12.714286,3,0.443787,0.511111,0.003201
+IL-17 signaling pathway,IL-17 signaling pathway,,23,1.071429,4,0.424929,0.488333,0.003252
+Nitrogen metabolism,Nitrogen metabolism,,34,17.452381,3,0.455927,0.538889,0.007257
+Progesterone-mediated oocyte maturation,Progesterone-mediated oocyte maturation,,22,1.452381,4,0.421348,0.482778,0.002661
+Prostate cancer,Prostate cancer,,23,1.071429,4,0.424929,0.488333,0.003252
+Th17 cell differentiation,Th17 cell differentiation,,23,1.071429,4,0.424929,0.488333,0.003252
+Vancomycin resistance,Vancomycin resistance,,15,-9.261905,4,0.39267,0.441667,0.00071
+Chloroalkane and chloroalkene degradation,Chloroalkane and chloroalkene degradation,,45,37.809524,4,0.543478,0.622778,0.007112
+Naphthalene degradation,Naphthalene degradation,,32,30.452381,4,0.511945,0.575,0.0019
+Sulfur relay system,Sulfur relay system,,46,44.880952,4,0.559701,0.633889,0.008478
+Cofactor metabolism,Cofactor metabolism,,16,11.404762,3,0.447761,0.492222,0.001542
+Enzymes with EC numbers,Enzymes with EC numbers,,36,24.833333,3,0.5,0.575556,0.007827
+DNA repair and recombination proteins,DNA repair and recombination proteins,,27,19.119047,3,0.496689,0.553333,0.010046
+Glyoxylate and dicarboxylate metabolism,Glyoxylate and dicarboxylate metabolism,,23,15.190476,3,0.480769,0.533333,0.005641
+Pentose phosphate pathway,Pentose phosphate pathway,,77,49.809524,4,0.625,0.733889,0.021633
+Thiamine metabolism,Thiamine metabolism,,41,37.214286,4,0.543478,0.613889,0.006615
+Transcription,Transcription,,58,51.5,4,0.572519,0.667222,0.010175
+Estrogen signaling pathway,Estrogen signaling pathway,,32,21.404762,4,0.460123,0.538333,0.008815
+Longevity regulating pathway - worm,Longevity regulating pathway - worm,,13,8.547619,4,0.412088,0.455,0.007995
+Ribosome biogenesis,Ribosome biogenesis,,32,12.238095,4,0.491803,0.561667,0.008617
+FoxO signaling pathway,FoxO signaling pathway,,8,8.642857,5,0.362319,0.395222,0.002853
+Lysine biosynthesis,Lysine biosynthesis,,12,8.97619,5,0.379747,0.422444,0.000426
+Monobactam biosynthesis,Monobactam biosynthesis,,12,8.97619,5,0.379747,0.422444,0.000426
+GABAergic synapse,GABAergic synapse,,20,12.428571,3,0.488599,0.532222,0.006456
+Glutamatergic synapse,Glutamatergic synapse,,25,11.761905,3,0.464396,0.525556,0.007167
+Lipoarabinomannan (LAM) biosynthesis,Lipoarabinomannan (LAM) biosynthesis,,56,44.690476,4,0.570342,0.661667,0.011551
+Streptomycin biosynthesis,Streptomycin biosynthesis,,21,-8.714286,3,0.464396,0.516667,0.003929
+Inositol phosphate metabolism,Inositol phosphate metabolism,,22,-5.809524,4,0.46875,0.522778,0.004491
+Prokaryotic defense system,Prokaryotic defense system,,8,-0.833333,4,0.390625,0.425,0.000517
+Tuberculosis,Tuberculosis,,13,7.52381,4,0.412088,0.455,0.007995
+Primary immunodeficiency,Primary immunodeficiency,,3,2.738095,5,0.291829,0.309667,0
+Quorum sensing,Quorum sensing,,16,2.428571,3,0.406504,0.454444,0.00297
+Transfer RNA biogenesis,Transfer RNA biogenesis,,26,13.976191,4,0.446429,0.515556,0.00083
+Ubiquinone and other terpenoid-quinone biosynthesis,Ubiquinone and other terpenoid-quinone biosynthesis,,2,2,0,0,0,0

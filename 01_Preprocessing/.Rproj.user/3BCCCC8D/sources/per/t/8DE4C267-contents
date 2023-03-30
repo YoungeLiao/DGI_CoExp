@@ -1,0 +1,299 @@
+library(Rtsne)
+library(ggplot2)
+library(RColorBrewer)
+library(paletteer)
+
+
+# === 1. load data  ===
+fpkm_raw <- read.table("../data/gene_fpkm_all_samples.txt", header = T)
+DEGs <- read.csv("./output_data/DEGs_BvsD_valid.csv", header = T)
+
+# log10 normalization 
+fpkm <- log(fpkm_raw[2:length(fpkm_raw)] + 1, 10)
+gene_id <- fpkm_raw$gene_id
+fpkm <- cbind(gene_id, fpkm)
+
+# match
+loc <- match(DEGs$gene_id, fpkm_raw$gene_id)
+genes <- fpkm[loc,]
+data <- genes[,2:7]
+
+
+# === 3. tsne ===
+set.seed(0)
+tsne_fpkm = Rtsne(
+  data,
+  dims = 2,
+  pca = T,
+  max_iter = 1000,
+  theta = 0.4,
+  perplexity = 20,
+  verbose = F
+)
+
+tsne_result = as.data.frame(tsne_fpkm$Y)
+colnames(tsne_result) = c("tSNE1","tSNE2")
+
+# theme
+
+top.mar=0.1
+right.mar=0.1
+bottom.mar=0.1
+left.mar=0.1
+mytheme <- theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5,size = 18, face = 'bold'),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16, face = 'bold'),
+        axis.text.x = element_text(size = 14, vjust = 0.5), # vjust = -0.001
+        legend.text = element_text(size = 12), 
+        legend.title = element_text(size = 16),
+        # axis.text = element_blank(), 
+        # axis.ticks = element_blank(), 
+        # axis.title = element_blank(), 
+        # legend.title = element_blank(),
+        # legend.position = 'right', # 调整legend位置
+        legend.position = 'none', 
+        # legend.background = element_blank(),
+        plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
+                         units="inches"))
+
+# plot
+ggplot(tsne_result,aes(tSNE1,tSNE2)) + 
+  # geom_point(colour = 'grey', alpha = 0.3, size = 1.2) + 
+  geom_point(colour="#85A4FE", alpha = 0.5, size = 1.5) + 
+  labs(title = 'DEGs of BvsD') + 
+  theme_bw() + 
+  mytheme
+
+# === 2. construct new data ===
+## --- BvsD ---
+position <- cbind(DEGs$gene_id, tsne_result)
+colnames(position) <- c('gene_id', 'tSNE1', 'tSNE2')
+
+# --- load SignalP and tmhmm ---
+signalp_raw <- read.csv("../data/03_1_SignalP.csv", header = T)
+tmhmm_raw <- read.csv("../data/03_2_tmhmm.csv", header = T)
+
+loc <- match(DEGs$gene_id, signalp_raw$gene_id)
+signalp <- signalp_raw[loc,2:3]
+
+loc <- match(DEGs$gene_id, tmhmm_raw$gene_id)
+tmhmm <- tmhmm_raw[loc,2:3]
+
+# log10 normalization 
+signalp <- log(signalp + 1, 10)
+gene_id <- fpkm_raw$gene_id
+fpkm <- cbind(gene_id, fpkm)
+tmhmm <- log(tmhmm + 1, 10)
+
+graph_data <- cbind(position, data, signalp, tmhmm)
+
+# save data
+write.csv(graph_data, 'output_data/graph_data_BvsD_SubCel.csv', row.names = FALSE)
+
+
+## --- 2.2 BvsD DESeqFea ---
+DESeqVar <- data.frame(DEGs$log2FC_YvsD, DEGs$pvalue_YvsD)
+colnames(DESeqVar) <- c('logFC_YvsD', 'pvalue_YvsD')
+DESeqExp <- data.frame(apply(data[,4:6], 1, mean))
+
+p1 <- ggplot(DESeqVar, aes(x=logFC_YvsD)) + 
+  geom_density()
+# p2 <- ggplot(DESeqVar, aes(x=pvalue_YvsD)) + 
+#   geom_density()
+# p2
+
+# # scale test
+# scaled_p <- data.frame(-log(DESeqVar$pvalue_YvsD, 10))
+# colnames(scaled_p) <- 'scaled_pvalue'
+# p3 <- ggplot(scaled_p, aes(x=scaled_pvalue)) + 
+#   geom_density()
+# 
+# scaled_p_test <- data.frame(scale(graph_data[,2:10]))
+# p3
+# ggplot(scaled_p_test, aes(x=First60)) + 
+#   geom_density()
+
+DESeqVar$pvalue_YvsD <- scaled_p
+colnames(DESeqVar) <- c('logFC_YvsD', 'scaled_pvalue')
+colnames(DESeqExp) <- 'mean'
+# save graph data
+graph_data <- cbind(position, DESeqVar, DESeqExp, signalp, tmhmm)
+graph_data <- data.frame(graph_data$gene_id, apply(graph_data[,2:10], 2, as.numeric))
+graph_data_value <- data.frame(scale(graph_data[,2:10]))
+graph_data <- cbind(graph_data$graph_data.gene_id, graph_data_value)
+colnames(graph_data) <- c()
+
+write.csv(graph_data, 'output_data/graph_data_YvsD_Deseqf.csv', row.names = FALSE)
+
+# === 3. cluster visualization ===
+
+# pallete 
+Pale_51 <- as.vector(paletteer_d('ggsci::default_igv'))
+pale_9_1 <- as.vector(paletteer_d('ggprism::pastels'))
+pale_20_2 <- as.vector(paletteer_d('ggthemes::Tableau_20'))
+pale_11_2 <- as.vector(paletteer_d('khroma::sunset'))
+pale_12_2 <- as.vector(paletteer_d('RColorBrewer::Set3'))
+pale_8_1 <- as.vector(paletteer_d('RColorBrewer::Pastel2'))
+pale_29 <- c(pale_20_2, pale_9_1)
+pale_28 <- c(pale_8_1, pale_11_2, pale_9_1)
+pale_31 <- c(pale_8_1, pale_11_2, pale_12_2)
+pale_32 <- c(pale_12_2, pale_20_2)
+pale_25 <- c(pale_12_2, pale_11_2, '#85A4FE', 'grey')
+pale_29 <- c(pale_25, pale_8_1)
+
+
+## --- 1. Kmeans ---
+Kmean <- read.csv('./output_data/Kmeans_24cluster_YvsD.csv', header = TRUE) 
+
+# init label
+tsne_plot <- cbind(genes$gene_id, tsne_result)
+colnames(tsne_plot) <- c('Gene_ID', 'tSNE1', 'tSNE2')
+tsne_plot$Kmeans_label <- 'Normal'
+
+# match cluster
+for (i in 1:length(tsne_plot$Gene_ID)){
+  if(isTRUE(match(tsne_plot[i,]$Gene_ID, Kmean$Gene_ID) != 'NA')){
+    tsne_plot[i,]$Kmeans_label <- Kmean[match(tsne_plot[i,]$Gene_ID, Kmean$Gene_ID),]$Kmeans_Cluster
+  }
+}
+tsne_plot$Kmeans_label <- paste('Cluster',tsne_plot$Kmeans_label)
+
+# check
+table(tsne_plot$Kmeans_label)
+
+# plot
+ggplot(tsne_plot, aes(tSNE1,tSNE2,color = Kmeans_label)) + 
+  # geom_point(alpha = 0.8) +
+  geom_point(alpha = 0.7, size = 3) +
+  # geom_density(alpha = 0.6)+
+  theme_bw() + 
+  scale_color_manual(values = pale_25) + 
+  labs(title = 'Kmeans') + 
+  mytheme
+
+## --- 2. eggNOG ---
+eggNOG <- read.csv('./output_data/EggNOG_matched_singlelabel.csv', header = TRUE) 
+
+tsne_plot$NOG_label <- 'Normal'
+
+# match cluster
+for (i in 1:length(tsne_plot$Gene_ID)){
+  if(isTRUE(match(tsne_plot[i,]$Gene_ID, eggNOG$gene_id) != 'NA')){
+    tsne_plot[i,]$NOG_label <- eggNOG[match(tsne_plot[i,]$Gene_ID, eggNOG$gene_id),]$eggNOG_Class
+  }
+}
+
+NOG_label <- sub('Normal', 'NA', tsne_plot$NOG_label)
+tsne_plot$NOG_label <- NOG_label
+
+# theme
+table(tsne_plot$NOG_label)
+
+mytheme <- theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5,size = 18, face = 'bold'),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16, face = 'bold'),
+        axis.text.x = element_text(size = 14, vjust = 0.5), # vjust = -0.001
+        legend.text = element_text(size = 12), 
+        legend.title = element_text(size = 16),
+        # axis.text = element_blank(), 
+        # axis.ticks = element_blank(), 
+        # axis.title = element_blank(), 
+        # legend.title = element_blank(),
+        legend.position = 'right', # 调整legend位置
+        # legend.position = 'none', 
+        # legend.background = element_blank(),
+        plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
+                         units="inches"))
+
+ggplot(tsne_plot, aes(tSNE1,tSNE2,color = NOG_label)) + 
+  geom_point(alpha = 0.8) +
+  # geom_density(alpha = 0.6)+
+  theme_bw() + 
+  scale_color_manual(values = pale_25) + 
+  labs(title = 'eggNOG') + 
+  mytheme
+
+## --- 3.1 DGI - results - 3000 epochs  ---
+DGI <- read.table('../results_YvsD/types.txt', header = F) 
+
+# colnames(TSA) <- c('gene_id', 'TSA_Cluster')
+
+# init label
+tsne_plot <- cbind(position, DGI)
+colnames(tsne_plot) <- c('otu', 'tSNE1', 'tSNE2', 'DGI_label')
+tsne_plot$DGI_label <- paste('Cluster',tsne_plot$DGI_label)
+
+table(tsne_plot$DGI_label)
+
+ggplot(tsne_plot, aes(tSNE1,tSNE2,color = DGI_label)) + 
+  geom_point(alpha = 0.7, size = 3) +
+  # geom_density(alpha = 0.6)+
+  theme_bw() + 
+  scale_color_manual(values = pale_25) + 
+  labs(title = 'DGI') + 
+  mytheme
+
+# save for further analysis
+write.csv(tsne_plot, 'output_data/DGI_labeled_YvsD.csv', row.names = FALSE)
+
+## --- 3.2 DGI - results - 30000 epochs  ---
+DGI <- read.table('../02_DGI/output_data/types_YvsD.txt', header = F) 
+
+# init label
+DGI_label <- DGI$V1
+# colnames(tsne_plot) <- c('otu', 'tSNE1', 'tSNE2', 'DGI_label')
+tsne_plot$DGI_label <- DGI_label
+tsne_plot$DGI_label <- paste('Cluster',tsne_plot$DGI_label)
+
+table(tsne_plot$DGI_label)
+
+ggplot(tsne_plot, aes(tSNE1,tSNE2,color = DGI_label)) + 
+  geom_point(alpha = 0.7, size = 3) +
+  # geom_density(alpha = 0.6)+
+  theme_bw() + 
+  scale_color_manual(values = pale_25) + 
+  labs(title = 'DGI') + 
+  mytheme
+
+# save for further analysis
+# write.csv(tsne_plot, 'output_data/DGI_labeled_YvsD.csv', row.names = FALSE)
+
+## --- 3.3 DGI - results - 30000 epochs - subcel  ---
+DGI <- read.table('../02_DGI/output_data/types_YvsD_SubCel.txt', header = F) 
+
+# init label
+DGI_label <- DGI$V1
+# colnames(tsne_plot) <- c('otu', 'tSNE1', 'tSNE2', 'DGI_label')
+tsne_plot$DGI_label <- DGI_label
+tsne_plot$DGI_label <- paste('Cluster',tsne_plot$DGI_label)
+
+table(tsne_plot$DGI_label)
+
+ggplot(tsne_plot, aes(tSNE1,tSNE2,color = DGI_label)) + 
+  geom_point(alpha = 0.7, size = 3) +
+  # geom_density(alpha = 0.6)+
+  theme_bw() + 
+  scale_color_manual(values = pale_25) + 
+  labs(title = 'DGI_SubCel') + 
+  mytheme
+
+## --- 3.4 DGI - results - 30000 epochs - DESeqf  ---
+DGI <- read.table('../02_DGI/output_data/types_YvsD_DESeqf.txt', header = F) 
+
+# init label
+DGI_label <- DGI$V1
+# colnames(tsne_plot) <- c('otu', 'tSNE1', 'tSNE2', 'DGI_label')
+tsne_plot$DGI_label <- DGI_label
+tsne_plot$DGI_label <- paste('Cluster',tsne_plot$DGI_label)
+
+table(tsne_plot$DGI_label)
+
+ggplot(tsne_plot, aes(tSNE1,tSNE2,color = DGI_label)) + 
+  geom_point(alpha = 0.7, size = 3) +
+  # geom_density(alpha = 0.6)+
+  theme_bw() + 
+  scale_color_manual(values = pale_25) + 
+  labs(title = 'DGI_DESeqf') + 
+  mytheme
