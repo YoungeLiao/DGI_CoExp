@@ -1,14 +1,4 @@
-# === load data v1: gene interaction ===
-# Hub_blue_raw <- read.csv('./03_DGI/output_data/GeneListofFilteredPathway_BvsD_HUBCluster4.csv', header = TRUE)
-# Hub_blue <- Hub_blue_raw[, c(1, 13:21, 9:10, (length(Hub_blue_raw) -1) )]
-# Hub_yellow_raw <- read.csv('./03_DGI/output_data/GeneListofFilteredPathway_YvsD_HUBCluster3.csv', header = TRUE)
-# Hub_yellow <- Hub_yellow_raw[, c(1, 13:21, 9:10, (length(Hub_yellow_raw) -1))]
-# phototransduction_blue_raw <- read.csv('./03_DGI/output_data/ClusterAssign_phototransduction_BvsD_7Cluster.csv', header = T)
-# phototransduction_blue<- phototransduction_blue_raw[, c(1, 13:21, 9:10, (length(phototransduction_blue_raw) -1))]
-# phototransduction_yellow_raw <- read.csv('./03_DGI/output_data/ClusterAssign_phototransduction_YvsD_7Cluster.csv', header = T)
-# phototransduction_yellow <- phototransduction_yellow_raw[, c(1, 13:21, 9:10, (length(phototransduction_yellow_raw) -1) )]
-# merge_data <- unique(rbind(Hub_blue, Hub_yellow, phototransduction_blue,phototransduction_yellow))
-# === load data v2: gene interaction - split datasets, blue vs dark ===
+
 # hub
 Hub_blue_raw <- read.csv('./03_DGI/output_data/GeneListofFilteredPathway_BvsD_HUBCluster4_v2.csv', header = TRUE)
 Hub_blue <- Hub_blue_raw[, c(1, 13:21, 9:10, (length(Hub_blue_raw) -1) )]
@@ -35,20 +25,7 @@ merge_data <- unique(rbind(signal_yellow, phototransduction_yellow))
 
 
 head(merge_data)
-# gene_id     Blue1      Blue2      Blue3      Dark1      Dark2      Dark3    Yellow1
-# 1 g_24930  2.412453   3.171607   3.431420   40.12658   36.59891   63.53419   49.18134
-# 2 g_05066 53.302695  55.998884  38.928972 1953.27696 2101.64390 1366.70594 1096.40196
-# 3 g_41985 88.519220 163.638073 225.939181 1852.31369 2007.43132 1745.86117 2833.02867
-# 4 g_18966 28.812081  30.191760  33.800899  895.10850  940.92516  706.55961  845.44092
-# 6 g_26961 10.731651  12.358376   9.894007  372.49442  388.76610  413.88250  261.39488
-# 8 g_22023  5.337555   7.832400   7.490678  289.52171   78.02930  393.80694 1010.76070
-# Yellow2    Yellow3                                                ko_des
-# 1   24.29615   30.19671                             glutathione S-transferase
-# 2 1958.52625 1983.24405                                             flagellin
-# 3 1488.56505  440.34928                    superoxide dismutase, Fe-Mn family
-# 4  801.46713  886.07421                                  glutamine synthetase
-# 6  221.98411  285.76343 ubiquinol-cytochrome c reductase cytochrome b subunit
-# 8  971.77936  574.33384                              molecular chaperone HtpG
+
 gene_names <- data.frame(paste(merge_data$ko_des, ' (', merge_data$gene_id, ')', sep = ''))
 colnames(gene_names) <- 'label'
 corr_data <- cbind(gene_names, merge_data[,2:(length(merge_data)-1)])
@@ -57,8 +34,8 @@ data <- t(corr_data[, -1])
 # calculate correlation matrix
 library(psych)
 occor = corr.test(data,use="pairwise",method="spearman",adjust="fdr",alpha=0.05)
-occor.r = occor$r # 取相关性矩阵R值
-occor.p = occor$p # 取相关性矩阵p值
+occor.r = occor$r 
+occor.p = occor$p 
 # filtering
 occor.r[occor.p>0.05|abs(occor.r)<0.6] = 0
 occor.r[occor.p>0.05|abs(occor.r)<0.8] = 0
@@ -134,8 +111,8 @@ data <- t(corr_data[, -1])
 # calculate correlation matrix
 library(psych)
 occor = corr.test(data,use="pairwise",method="spearman",adjust="fdr",alpha=0.05)
-occor.r = occor$r # 取相关性矩阵R值
-occor.p = occor$p # 取相关性矩阵p值
+occor.r = occor$r 
+occor.p = occor$p 
 # filtering
 occor.r[occor.p>0.05|abs(occor.r)<0.6] = 0
 occor.r

@@ -1,6 +1,3 @@
-# default setting
-setwd("/Users/yangliao/Documents/GitHub/OSProtein/")
-
 # === load data ===
 # --- HGP & SGP ---
 # matching for topological landmark genes analysis, blue light's hub gene panel (HGP)
@@ -109,7 +106,7 @@ mytheme<-theme_classic()+
         legend.text = element_text(size = 14),
         # legend.title = element_text(size = 16),
         legend.title = element_blank(),
-        legend.position = c(0.9, 0.9), # 调整legend位置
+        legend.position = c(0.9, 0.9), 
         # legend.position = 'right',
         legend.background = element_blank(),
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
@@ -123,14 +120,5 @@ p <- ggbarplot(plotdata, x="ko_des", y="value", add = c("mean_se", 'jitter'), co
 
 p + mytheme + labs(y = 'Expression level (FPKM)', x = '', title = 'HGP of yellow light')
 
-
-# # extract significant denitrification genes for nitrate removal strategy development (based on blue light)
-# NOx_id <- c('g_06597', 'g_19066', 'g_32124', 'g_48246', 'g_51049', 'g_55724')
-# NOx_name <- c('nirK', 'narK1', 'narK2', 'narG', 'narG', 'aniA')
-# 
-# # extract significant phototransdcution genes for resource recovery (based on signaling)
-# 
-# 
-# 
 
 

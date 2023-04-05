@@ -1,9 +1,3 @@
-#!/usr/bin/env Rscript
-setwd("/Users/yangliao/Documents/GitHub/OSProtein/03_DGI")#设置工作目录
-
-#pdf(file="FunctionsBubbleChart.pdf", width=14, height=11)
-
-# 读取文件 sep 根据文件格式确定
 data <- read.table("data/bubble_FAS.txt",header = TRUE, sep = '\t')
 library(ggplot2)
 library(reshape)
@@ -47,20 +41,14 @@ p <- pheatmap(data_heat[,1:5], cluster_row = TRUE, cluster_col = TRUE, show_rown
 
 # --- bubble plot ---
 names(data_melt) = c("Functions", "Samples", "Abundances")
-data_melt$Sites=substring(data_melt$Samples,1,4)# 根据第二列的样本名称提取站位信息，用于后续着色
+data_melt$Sites=substring(data_melt$Samples,1,4)
 data_melt <-as.data.frame(data_melt)
 data_melt$Abundances <- log(1+exp(data_melt$Abundances))
 # save data
 write.csv(data_melt, './output_data/meltdata_buble.csv', row.names = FALSE)
-# 做主图
 bubble <- ggplot(data_melt[which(data_melt$Abundances>0),], 
                  aes(x = Samples, y = Functions, size = Abundances, color = Sites)) + geom_point(alpha = 0.8)
 
-
-# 字体修饰
-##windowsFonts(myFont = windowsFont("Times New Roman"))
-
-# 修改细节 — 图注，点大小，点shape
 bubble_style <- bubble + theme_classic()+
   labs(
     x = "Sampling Sites",

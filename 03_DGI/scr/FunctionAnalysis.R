@@ -30,16 +30,12 @@ genes_YB <- rbind(genes_Y, genes_B)
 genes_YB$Mean_expre <- apply(genes_YB[, 13:21], 1, mean)
 thre <- 3
 genes_YB_filtered <- unique(filter(genes_YB, genes_YB$Mean_expre > thre))
-# length(unique(genes_YB_filtered$SwissProt_Description)) # 8 swissprot in total
-# length(unique(genes_YB_filtered$gene_id)) # 10 genes in total
-# save raw data (not summarized)
+
 write.csv(genes_YB_filtered, './03_DGI/output_data/Phototransduction_BY_merged_raw.csv', row.names = FALSE)
 
 # === laod data and pretreatment: phototransduction ===
 # --- nitrogen metabolism ---
-## v1 --- manually
-# nitrogen_Y <- read.csv('./03_DGI/data/nitrogen_YvsD.csv', header = TRUE)
-## v2 --- automatically
+
 genes_Y <- read.csv('./03_DGI/output_data/ClusterAssign_N_YvsD_7Cluster.csv', header = TRUE)
 genes_B <- read.csv('./03_DGI/output_data/ClusterAssign_N_BvsD_7Cluster.csv', header = TRUE)
 
@@ -48,8 +44,7 @@ genes_YB <- rbind(genes_Y, genes_B)
 genes_YB$Mean_expre <- apply(genes_YB[, 13:21], 1, mean)
 thre <- 3
 genes_YB_filtered <- unique(filter(genes_YB, genes_YB$Mean_expre > thre))
-# length(unique(genes_YB_filtered$SwissProt_Description)) # 11 swissprot in total
-# length(unique(genes_YB_filtered$gene_id)) # 19 genes in total
+
 # save raw data (not summarized)
 write.csv(genes_YB_filtered, './03_DGI/output_data/Nitrogen_BY_merged_raw.csv', row.names = FALSE)
 ## !!! tips: cluster is not referenable, since it includes both clusters for blue and yellow light
@@ -108,15 +103,6 @@ plotdata <- data.frame(SwissProt_id,
 colnames(plotdata) <- c('group', 'SwissProt_id', 'value')
 plotdata$value <- log10(plotdata$value + 1)
 
-# save data
-# write.csv(result_N_filtered, './03_DGI/output_data/ClusterAssign_N_BvsD_7Cluster.csv', row.names = FALSE)
-
-# v1: manually nitrogen metabolism of yellow light
-# light <- rep(nitrogen$light, 3)
-# genes <- c(rep('NarK1', length(nitrogen$light)), rep('NarG', length(nitrogen$light)), rep('AniA', length(nitrogen$light)))
-# values <- log10(c(nitrogen$NarK1, nitrogen$NarG, nitrogen$AniA)+1)
-# data <- data.frame(light, genes, values)
-
 
 # === 2. Visualization ===
 library(ggplot2)
@@ -136,18 +122,6 @@ p <- p + geom_jitter(data=plotdata,
 
 p + labs(y = 'log10(fpkm)', x = '') + mytheme
 
-
-# v1: manually nitrogen metabolism of yellow light
-# theme(axis.text.x = element_text(angle = 45, size = 8))
-# 
-# Cust_palette <- c('#40A9FE', '#252525', '#FEA940') 
-# p <- ggbarplot(data, x="genes", y="values", color = "light",
-#                palette = Cust_palette, width = 0.7, alpha = 0.8 ,
-#                add = "mean_se", add.params = list(width = 0.3, alpha = 0.7),
-#                position = position_dodge(0.8)
-#                # add = "jitter", add.params = list()
-#                )
-# p + labs(y = 'log10(fpkm)', x = '') + mytheme
 
 
 

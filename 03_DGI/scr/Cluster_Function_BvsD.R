@@ -13,11 +13,6 @@ mytheme <- theme_bw() +
         axis.text.x = element_text(size = 14, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 12), 
         legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
-        # legend.title = element_blank(),
-        # legend.position = c(0.1, 0.8), # 调整legend位置
         legend.position = 'none', 
         # legend.background = element_blank(),
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
@@ -28,10 +23,6 @@ mytheme1 <- theme_bw() +
         axis.title = element_text(size = 14, face = 'bold'),
         axis.text.x = element_text(size = 10, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 12), 
-        # legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
         legend.title = element_blank(),
         legend.position = 'left', # 调整legend位置
         # legend.position = 'none', 
@@ -44,10 +35,6 @@ mytheme2 <- theme_bw() +
         axis.title = element_text(size = 14, face = 'bold'),
         axis.text.x = element_text(size = 10, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 12), 
-        # legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
         legend.title = element_blank(),
         legend.position = 'right', # 调整legend位置
         # legend.position = 'none', 
@@ -56,7 +43,7 @@ mytheme2 <- theme_bw() +
                          units="inches"))
 
 # === Prepare data, including calculating p-value === 
-## ！！！！！！！！=== 注意一次只能运行一个！不然之后画点时会重合画不出来！=== ！！！！！！！
+
 # data1: cluster 4
 rawdata <- read.csv('./03_DGI/output_data/Cluster4_BvsD.csv', header = T)
 # data2: cluster 5
@@ -68,22 +55,9 @@ rawdata <- read.csv('./03_DGI/output_data/Cluster2_BvsD.csv', header = T)
 
 
 # === summary and merge based on SwissProt ===
-# summary(rawdata[, 12:13])
-# rawdata$level3_pathway_name
+
 library(dplyr)
-# detach('package:plyr')
-## v1
-# pathway <- rawdata %>% 
-#   group_by(level3_pathway_name) %>%
-#   summarise(B1mean = mean(Blue1), 
-#             B2mean = mean(Blue2),
-#             B3mean = mean(Blue3),
-#             D1mean = mean(Dark1), 
-#             D2mean = mean(Dark2),
-#             D3mean = mean(Dark3),
-#             Y1mean = mean(Yellow1), 
-#             Y2mean = mean(Yellow2),
-#             Y3mean = mean(Yellow3)) 
+
 pathway <- rawdata %>% 
   group_by(level3_pathway_name) %>%
   summarise(B1mean = mean(Blue1), 
@@ -158,15 +132,7 @@ Expre <- 20
 Func_BvsD <- filter(kegg_level3, (kegg_level3$BvsD > FC_up | kegg_level3$BvsD < FC_down) & 
                       kegg_level3$pvalue_BvsD < p_thre &
                       blue >Expre) 
-# 26 DEGs in total
 
-# p_thre <- 0.01
-# FC_up <- 2
-# FC_down <- 0.5
-# Expre <- 10
-# Func_BvsD <- filter(kegg_level3, (kegg_level3$BvsD > FC_up | kegg_level3$BvsD < FC_down) & 
-#                       kegg_level3$pvalue_BvsD < p_thre &
-#                       blue >Expre) 
 # 22 DEGs in total
 write.csv(Func_BvsD, './03_DGI/output_data/BvsD/FunctionAnaly_cluster4.csv', row.names = FALSE)
 
@@ -219,10 +185,7 @@ cluster_pale <- c("#FB8072FF","#80B1D3FF", "#B3DE69FF")
 
 
 library(ggrepel)
-# rm(list=ls(all=TRUE))
-# debug start
-# plotdata <- plotdata[5:35, ]
-# debug end
+
 p <- ggplot(plotdata,
             aes(x = pvalue_BvsD, y = BvsD, size = Expression, color = cluster)) +
   geom_point(alpha=0.7)
@@ -278,22 +241,9 @@ scale_pale1 <- c('#13C2C2',"#D9D9D9",'#D2ACF7','#B37EEB', '#9253DE') #'#006C75',
 scale_pale2 <- c("#9253DE", "#D9D9D9", '#36CFC8', '#13C2C2', '#006C75')
 scale_pale3 <- c("#9253DE", "#D9D9D9", '#36CFC8','#13C2C2')
 scale_pale4 <- c("#9253DE", "#D9D9D9", '#13C2C2')
-# scale_pale3 <- c("#9253DE", '#B5F5EB','#36CFC8','#13C2C2')
-# v1
+
+
 p + scale_size(range = c(1, 12), name="Expression") +
   scale_color_gradientn(colours = scale_pale4) + #'#006C75', #36CFC8',
   mytheme2
 
-
-
-
-
-
-# data <- plot_data[, c(1, 11:17)]
-# data$Expression <- apply(plot_data[,15:17], 1, mean)
-# head(data)
-
-# ## debug
-# a <- temp[, 336:338]
-# compare_means(Pathway337 ~ group, data = a, method = 't.test')
-# class(a[,2]) —— 注意数据类型

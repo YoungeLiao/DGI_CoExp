@@ -56,11 +56,6 @@ mytheme1 <- theme_bw() +
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
                          units="inches"))
 
-# fpkm <- read.table("./data/gene_fpkm_all_samples.txt",comment.char = "!",strip.white=T,sep="\t",header = T)
-# head(fpkm)
-
-# tem <- colnames(fpkm)[2:10]
-# tem <- rep(tem, length(fpkm[,1]))
 
 tem <- c(rep(c('Blue1'), length(fpkm[,1])),
          rep(c('Blue2'), length(fpkm[,1])),
@@ -71,7 +66,7 @@ tem <- c(rep(c('Blue1'), length(fpkm[,1])),
          rep(c('Yellow1'), length(fpkm[,1])),
          rep(c('Yellow2'), length(fpkm[,1])),
          rep(c('Yellow3'), length(fpkm[,1])))
-# # class(tem) # check 
+# class(tem) # check 
 
 density_counts <- as.data.frame(c(as.data.frame(tem),
                                   as.data.frame(c(fpkm$Blue1, fpkm$Blue2, fpkm$Blue3,
@@ -82,14 +77,6 @@ colname <- c('samples', 'fpkm')
 # class(density_counts) # check
 colnames(density_counts) <- colname
 head(density_counts) # check
-# samples     fpkm
-# 1   Blue1 20.15692
-# 2   Blue1 27.37236
-# 3   Blue1 22.83852
-# 4   Blue1 25.57190
-# 5   Blue1 18.96200
-# 6   Blue1 12.11606
-# dim(density_counts) # check: [1] 512919      2 (51291 = 56991*9)
 
 # remove rows with counts = 0. 
 temp_df <- density_counts[-which(density_counts$fpkm == 0),] 

@@ -63,13 +63,7 @@ mytheme1 <- theme_bw() +
         axis.text.x = element_text(size = 14, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 12), 
         legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
-        # legend.title = element_blank(),
-        # legend.position = 'right', # 调整legend位置
         legend.position = 'none', 
-        # legend.background = element_blank(),
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
                          units="inches"))
 mytheme2 <- theme_bw() +
@@ -78,14 +72,8 @@ mytheme2 <- theme_bw() +
         axis.title = element_text(size = 16, face = 'bold'),
         axis.text.x = element_text(size = 14, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 14), 
-        # legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
         legend.title = element_blank(),
         legend.position = 'right', # 调整legend位置
-        # legend.position = 'none', 
-        # legend.background = element_blank(),
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
                          units="inches"))
 
@@ -187,13 +175,7 @@ mytheme <- theme_bw() +
         axis.text.x = element_text(size = 14, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 12), 
         legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
-        # legend.title = element_blank(),
         legend.position = 'right', # 调整legend位置
-        # legend.position = 'none', 
-        # legend.background = element_blank(),
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
                          units="inches"))
 

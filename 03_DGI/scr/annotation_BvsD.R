@@ -1,6 +1,4 @@
 ## === BvsD DEGs ===
-# https://mp.weixin.qq.com/s/Yj4EZTAJ7kNNUomIw_Kikg
-setwd("/Users/yangliao/Documents/GitHub/OSProtein/")#设置工作目录
 # --- load data ---
 cluster_label <- read.csv('./03_DGI/output_data/tsne_BvsD_labels_all_7cluster.csv', header = TRUE)
 fpkm <- read.table('./data/gene_fpkm_all_samples.txt', header = TRUE)
@@ -73,16 +71,12 @@ result_N <- rbind(result_nitrate, result_nitrite)
 fun <- peroxisome
 
 # reorder results
-## Initialization - DGI_label 
-# (-1.429994 for peroxisome) (2.272994 for phototransduction) (-1.19469) (-0.6340549)
 data <-  data.frame(table(fun$DGI_label))
 ref <- data.frame(table(matched_kegg$DGI_label))
-## Initialization - DGI_sub_label 
-# (-1.2299 for peroxisome) (2.31007 for phototransduction) (-1.289782 for OxidativePhosphorylation) (-0.5954653 for Xebio)
+
 data <- data.frame(table(fun$DGI_sub_label))
 ref <- data.frame(table(matched_kegg$DGI_sub_label))
-## Initialization - Kmeans_label 
-# (-1.655619 for peroxisome) (1.70732) (-1.072017) (-1.540794)
+
 data <-  data.frame(table(fun$Kmeans_label))
 ref <- data.frame(table(matched_kegg$Kmeans_label))
 ## Initialization - Kmeans_sub_label (-1.324743 for peroxisome) (1.521689) (0.3578049) (-1.098327)
@@ -96,14 +90,13 @@ data_ref <- merge(data, ref, by = 'Var1')
 result <- data.frame(data_ref$Freq.x/data_ref$Freq.y) # ri
 colnames(result) <- 'Freq'
 result_ordered <- result[order(result$Freq, decreasing = TRUE),]
-# result_ordered
-# 0.002382087 0.001768242 0.001722950 0.001277427 0.001096491 0.001022495 0.000266809
+
 if(length(result_ordered) > 2){
   score_raw <- sum(result_ordered[1:2]) - sum(result_ordered[3:length(result_ordered)])
 } else{
   score_raw <- sum(result_ordered)
   }
-# score_raw <- sum(result_ordered[1:2]) - sum(result_ordered[3:7])
+
 score <- score_raw/(sum(data_ref$Freq.x)/sum(data_ref$Freq.y)) # larger is better (i.e. when value is negative, closer to zero indicates better performance)
 score
 
@@ -127,19 +120,7 @@ write.csv(fun_save_v4, './03_DGI/output_data/Mechanism_genes_NO3NO2_BvsD_v5.csv'
 # === ratio of key/functional genes ===
 name_list <- list(Xebio, peroxisome, Nitrogen, phototransduction)
 names <- c('Xebio', 'peroxisome', 'Nitrogen','phototransduction')
-# fun <- name_list[[4]]
-# data <-  data.frame(table(fun$DGI_sub_label))
-# ref <- data.frame(table(matched_kegg$DGI_sub_label))
-# data_ref <- merge(data, ref, by = 'Var1')
-# result <- data.frame(data_ref$Freq.x/data_ref$Freq.y)
-# ratio <- cbind(data_ref, result)
-# colnames(ratio) <- c('Var1', 'Freq.x', 'Freq.y', 'Ratio')
-# ratio_ordered <- ratio[order(ratio$Ratio, decreasing = TRUE),]
-# ratio_ordered$Pathway <- names[1]
-# # for i = 1
-# ratio_results <- ratio_ordered
-# # for i > 1
-# ratio_results <- rbind(ratio_results, ratio_ordered)
+
 for (i in 1:length(name_list)){
   fun <- name_list[[i]]
   data <-  data.frame(table(fun$DGI_sub_label))
@@ -156,8 +137,8 @@ for (i in 1:length(name_list)){
     ratio_results <- rbind(ratio_results, ratio_ordered)
   }
 }
-# visualization
-# Stacked barplot with multiple groups
+
+
 pale_9_1 <- as.vector(paletteer_d('ggprism::pastels'))
 pale_20_2 <- as.vector(paletteer_d('ggthemes::Tableau_20'))
 pale_11_2 <- as.vector(paletteer_d('khroma::sunset'))
@@ -180,10 +161,6 @@ mytheme1 <- theme_minimal() +
         axis.title = element_text(size = 16, face = 'bold'),
         axis.text.x = element_text(size = 14, vjust = 0.7, angle = 15), # vjust = -0.001
         legend.text = element_text(size = 12), 
-        # legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
         legend.title = element_blank(),
         legend.position = 'right', # 调整legend位置
         # legend.position = 'none', 
@@ -210,7 +187,6 @@ ggplot(data=plot_data, aes(x=Pathway, y=Ratio, fill = factor(Var1,
 
 
 # === key/functional genes on SwissProt and save data ===
-# --- co-expressed functional pathways ---
 table(Xebio$DGI_sub_label)
 table(peroxisome$DGI_sub_label)
 

@@ -1,35 +1,18 @@
-# heatmap,URL:https://www.jianshu.com/p/ce7c8159fdbc
-# annotation: URL: https://zhuanlan.zhihu.com/p/370477638
 # loading data
-setwd('/Users/yangliao/Documents/Github/OSProtein')
 DEGs_exp_rpkm <- read.csv("./01_Preprocessing/output_data/DEGs_filtered.csv",header = T)
 dim(DEGs_exp_rpkm)
 
 
 data_raw <- DEGs_exp_rpkm[,2:length(DEGs_exp_rpkm)]
 rownames(data_raw) <- DEGs_exp_rpkm$gene_id
-# class(data)
-# head(data)
 
 data <- log10(data_raw[,18:26] + 1)
 summary(data)
-# data_centered <- scale(data, center = T, scale = F)
-# summary(data_centered)
+
 
 # 
 library(pheatmap)
-# library(RColorBrewer)
-# # pheatmap(data)
-# p <- pheatmap(data[1:1000], cluster_row = FALSE, cluster_col = TRUE, show_colnames= FALSE,
-#          color=colorRampPalette(rev(c("#FE7875","white","#587DF7")))(102),
-#          # color = colorRampPalette(rev(brewer.pal(n = 6, name = "RdBu")))(100),
-#          scale = 'column', fontsize = 14)
 
-# Save clusters
-# col_cluster <- cutree(p$tree_col, k=26)
-# newOrder <- data[,p$tree_col$order]
-# newOrder[ncol(newOrder)+1,] = col_cluster[match(colnames(newOrder), names(col_cluster))]
-# colnames(newOrder)[ncol(newOrder)]="Cluster"
 p <- pheatmap(data, cluster_row = TRUE, cluster_col = TRUE, show_rownames= FALSE,
               color=colorRampPalette(rev(c("#FE7875","white","#587DF7")))(1000),
               # color = colorRampPalette(rev(brewer.pal(n = 6, name = "RdBu")))(100),

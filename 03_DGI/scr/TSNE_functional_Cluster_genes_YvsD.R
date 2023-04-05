@@ -186,7 +186,3 @@ p1 <- ggplot(tsne_plot_cluster3, aes(tSNE1,tSNE2, color = DGI_sub_label)) +
   # labs(title = 'Subcellular DGI') + 
   # SCI = 0.42440431406659995 (EM)
   mytheme1
-# save fig name: TSNE_YvsD_7cluster_dgi_subcel_4.8_4.5.pdf
-p1
-
-p0 + p1

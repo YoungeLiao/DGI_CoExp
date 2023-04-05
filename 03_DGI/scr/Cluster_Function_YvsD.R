@@ -12,13 +12,7 @@ mytheme <- theme_bw() +
         axis.text.x = element_text(size = 14, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 12), 
         legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
-        # legend.title = element_blank(),
-        # legend.position = c(0.1, 0.8), # 调整legend位置
         legend.position = 'none', 
-        # legend.background = element_blank(),
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
                          units="inches"))
 mytheme1 <- theme_bw() +
@@ -27,14 +21,8 @@ mytheme1 <- theme_bw() +
         axis.title = element_text(size = 14, face = 'bold'),
         axis.text.x = element_text(size = 10, vjust = 0.5), # vjust = -0.001
         legend.text = element_text(size = 12), 
-        # legend.title = element_text(size = 16),
-        # axis.text = element_blank(), 
-        # axis.ticks = element_blank(), 
-        # axis.title = element_blank(), 
         legend.title = element_blank(),
-        legend.position = 'left', # 调整legend位置
-        # legend.position = 'none', 
-        # legend.background = element_blank(),
+        legend.position = 'left', 
         plot.margin=unit(x=c(top.mar,right.mar,bottom.mar,left.mar),
                          units="inches"))
 
@@ -53,9 +41,6 @@ rawdata <- read.csv('./03_DGI/output_data/Cluster1_YvsD.csv', header = T)
 # rawdata$level3_pathway_name
 library(dplyr)
 # library(tidyverse)
-# detach('package:plyr')
-## v1
-# group_by(rawdata, level3_pathway_name)
 pathway <- rawdata %>% 
   group_by(level3_pathway_name) %>%
   summarise(B1mean = mean(Blue1), 
@@ -132,22 +117,6 @@ Expre <- 10
 Func_YvsD <- filter(kegg_level3, (kegg_level3$YvsD > FC_up | kegg_level3$YvsD < FC_down) & 
                       kegg_level3$pvalue_YvsD < p_thre &
                       yellow > Expre) 
-# results: 11 pathways for cluster 4
-# 
-
-## v2
-# p_thre <- 0.15
-# FC_up <- 1.5
-# FC_down <- 0.5
-# Expre <- 10
-# Func_YvsD <- filter(kegg_level3, (kegg_level3$YvsD > FC_up | kegg_level3$YvsD < FC_down) & 
-#                       kegg_level3$pvalue_YvsD < p_thre &
-#                       blue > Expre) 
-## v1
-# p_thre <- 0.12
-# FC_up <- 2
-# FC_down <- 0.5
-# Func_YvsD <- filter(kegg_level3, (kegg_level3$YvsD > FC_up | kegg_level3$YvsD < FC_down) & kegg_level3$pvalue_YvsD < p_thre) 
 write.csv(Func_YvsD, './03_DGI/output_data/YvsD/FunctionAnaly_cluster4.csv', row.names = FALSE)
 
 
@@ -185,17 +154,13 @@ Expre <- 3
 Func_YvsD <- filter(kegg_level3, (kegg_level3$YvsD > FC_up | kegg_level3$YvsD < FC_down) &
                       kegg_level3$pvalue_YvsD < p_thre &
                       yellow > Expre)
-# 14 for cluster 1
-# FC_up <- 22
-# dark_abun_thre <- 0.1
-# Func_Yvsd <- filter(kegg_level3, kegg_level3$YvsD > FC_up & kegg_level3$dark > 0.1) 
+
 write.csv(Func_YvsD, './03_DGI/output_data/YvsD/FunctionAnaly_cluster1.csv', row.names = FALSE)
 
 # === Intra-cluster function plot ===
 plot_data <- read.csv('./03_DGI/output_data/YvsD/FunctionAnaly_cluster1.csv', header = TRUE)
 data <- plot_data[, c(1, 11:17)]
 data$Expression <- apply(plot_data[,8:10], 1, mean)
-# data$Expression <- apply(plot_data[,16:17], 1, mean) # mean expression of yellow light dataasets (only include dark and yellow)
 head(data)
 
 library(ggrepel)
@@ -256,14 +221,9 @@ plotdata_cluster6$cluster <- 'cluster6'
 plotdata <- rbind(plotdata_cluster1, plotdata_cluster3, plotdata_cluster6, plotdata_cluster4)
 plotdata$Expression <- apply(plotdata[,15:17], 1, mean)
 
-# [1] "#8DD3C7FF" "#FFFFB3FF" "#BEBADAFF" "#FB8072FF" "#80B1D3FF" "#FDB462FF"
-# [7] "#B3DE69FF" "#FCCDE5FF" "#D9D9D9FF" "#BC80BDFF" "#CCEBC5FF" "#FFED6FFF"
-# custo_color <- c('grey', '#FF69B4FF', "#FB8072FF","#80B1D3FF", "#B3DE69FF", 
-#                        "#40E0D0FF", "#9370DBFF", 
-#                        '#1E90FFFF', '#1E90FFFF', "#FFED6FFF")
+
 cluster_pale <- c('#8DD3C7FF','#BEBADAFF',"#FB8072FF", "#FDB462FF")
-# pale_10 <- as.vector(paletteer_d('ggsci::default_jco'))
-# pale_51 <- as.vector(paletteer_d('ggsci::default_igv'))
+
 
 library(ggrepel)
 p <- ggplot(plotdata,  
@@ -288,11 +248,4 @@ p + scale_size(range = c(1, 15), name="Expression") +
   # scale_color_gradientn(colours = c("#9253DE", "#D9D9D9", '#36CFC8', '#13C2C2', '#006C75')) + 
   mytheme1
 
-# data <- plot_data[, c(1, 11:17)]
-# data$Expression <- apply(plot_data[,15:17], 1, mean)
-# head(data)
 
-# ## debug
-# a <- temp[, 336:338]
-# compare_means(Pathway337 ~ group, data = a, method = 't.test')
-# class(a[,2]) —— 注意数据类型

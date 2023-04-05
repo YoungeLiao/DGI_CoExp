@@ -119,17 +119,7 @@ tsne_plot_nitrogen$label <- c('nirK (P25006)', 'narK1 (Q9RA46)', 'narG (P09152)'
 
 
 # --- plot ---
-# pale_10 <- as.vector(paletteer_d('ggsci::default_jco'))
-# pale_12_2 <- as.vector(paletteer_d('RColorBrewer::Set3'))
-# background_pale1 <- c('grey', pale_10)
-# background_pale2 <- c('grey', pale_9_1)
-# background_pale3 <- c('grey', pale_8_1)
-# background_pale4 <- c('grey', pale_20_2)
-# background_pale5 <- c('grey', pale_12_2)
-# background_pale6 <- c('grey', pale_20_2)
-# pale_12_2 
-# [1] "#8DD3C7FF" "#FFFFB3FF" "#BEBADAFF" "#FB8072FF" "#80B1D3FF" "#FDB462FF"
-# [7] "#B3DE69FF" "#FCCDE5FF" "#D9D9D9FF" "#BC80BDFF" "#CCEBC5FF" "#FFED6FFF"
+
 custo_color <- c('grey', '#FF69B4FF', "#FB8072FF","#80B1D3FF", "#B3DE69FF", 
                        "#40E0D0FF", "#9370DBFF","#9370DBFF", 
                        '#1E90FFFF', '#1E90FFFF', "#FFED6FFF")
@@ -176,17 +166,3 @@ p2 <- p1 + geom_text_repel(data=tsne_plot_nitrogen, aes(tSNE1, tSNE2,label=label
 )
 
 p2
-  
-  
-# p1 <- ggplot(tsne_plot_cluster3, aes(tSNE1,tSNE2, color = DGI_sub_label)) + 
-#   geom_point(alpha = 0.7, size = 2) +
-#   # geom_density(alpha = 0.6)+
-#   theme_bw() + 
-#   scale_color_manual(values = pale_25) + 
-#   # labs(title = 'Subcellular DGI') + 
-#   # SCI = 0.42440431406659995 (EM)
-#   mytheme1
-# # save fig name: TSNE_YvsD_7cluster_dgi_subcel_4.8_4.5.pdf
-# p1
-# 
-# p0 + p1

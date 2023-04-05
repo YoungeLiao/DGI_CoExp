@@ -1,5 +1,3 @@
-# default setting
-setwd("/Users/yangliao/Documents/GitHub/OSProtein/")
 
 # === load data ===
 genes_list <- read.csv('./02_DatasetAnalysis/output_data/top30_geneid.csv', header = TRUE)
