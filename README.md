@@ -8,11 +8,11 @@ This repository includes data used for visualization, modeling and statistical a
 
 ### 1.1 Wet- and dry-lab water biotechnology development
 
-![WetDryLab](./Figures/WetDryLab.pdf)
+![WetDryLab](Figures/WetDryLab.pdf)
 
 ### 1.2 Workflow of GNN
 
-![GNNWorkflow](./Figures/Workflow.pdf)
+![GNNWorkflow](Figures/Workflow.pdf)
 
 ## 2 Development Environment
 
