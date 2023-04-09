@@ -8,11 +8,11 @@ This repository includes data used for visualization, modeling and statistical a
 
 ### 1.1 Wet- and dry-lab water biotechnology development
 
-![WetDryLab](/Users/yangliao/Documents/GitHub/DGI_CoExp/Figures/WetDryLab.pdf)
+![WetDryLab](/Users/yangliao/Documents/GitHub/DGI_CoExp/Figures/WetDryLab.png)
 
 ### 1.2 Workflow of GNN
 
-![GNNWorkflow](/Users/yangliao/Documents/GitHub/DGI_CoExp/Figures/Workflow.pdf)
+![GNNWorkflow](/Users/yangliao/Documents/GitHub/DGI_CoExp/Figures/Workflow.png)
 
 ## 2 Development Environment
 
@@ -29,4 +29,4 @@ This repository includes data used for visualization, modeling and statistical a
 
 ## 3 Contact
 
-If you have any questions or feedback, feel free to ask Yang Liao: liaoy21@mails.tsinghua.edu.cn 
+If you have any questions or feedback, feel free to reach Yang Liao: liaoy21@mails.tsinghua.edu.cn 
