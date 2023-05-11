@@ -1,6 +1,6 @@
 # DGI_CoExp
 
-This is the repository for Research Article: **Geometric deep-learning-assisted wastewater treatment: genetic co-expression for light-regulated nitrate removal and bioactive substances recovery**
+This is the repository for Research Article: **From mechanism to application: decrypting light-regulated denitrifying microbiome through geometric deep learning**
 
 This repository includes data used for visualization, modeling and statistical analysis. We adopted graph neural networks (GNNs) with Deep Graph Infomax (DGI) algorithm to unsupervised learned the co-expression gene panels, which could be utilized to identify critical pathways and further exploited to construct topological network models. The topological network models reveal the co-expression relationship on the gene level and the identified landmark genes were important bases to develop new microbial regulation strategies.
 
