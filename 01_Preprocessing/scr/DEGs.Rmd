@@ -7,6 +7,9 @@ title: "DESeq"
 
 Load metatranscriptomics data of reads counts for DESeq analysis. 
 ```{r}
+# DATAPATH = '../data/ZhaoJing/metagenomics_33samples/reads_number.txt'
+# setwd(DATAPATH)
+# getwd(DATAPATH)
 raw.counts <- read.table("../data/gene_count.txt", sep='\t', header = T,row.names = 1)
 head(raw.counts)
 dim(raw.counts)
